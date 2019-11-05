@@ -10,15 +10,18 @@
 		<a href ="{{event.id}}"><li> {{event.title}} </li></a>
 	{% endfor %}
 	</ol>
-	<form  method="POST" action="create_event/">
+	<form enctype="multipart/form-data"  method="POST" action="create_event/">
          <input type="text" name="title" placeholder="title">
           <input type="text" name="date" placeholder="date">
           <input type="text" name="description" placeholder="description">
           <input type="text" name="organizer" placeholder="organizer">
           <input type="text" name="department" placeholder="department">
+          <label for="myfile" style="color: black;">Upload your file</label>
+   		 <input type="file" name="myfile1" style="margin-bottom:20px" id="myfile" class="form-control" >
           <button >Create event</button>
 
   </form>
+
 
 </body>
 </html>

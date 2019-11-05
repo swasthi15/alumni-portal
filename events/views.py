@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from events.models import events
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 
 def index(request):
 	eventlist = events.objects.all()
@@ -19,11 +21,20 @@ def create_event(request):
     description = request.POST.get('description')
     organizer = request.POST.get('organizer')
     department = request.POST.get('department')
-    
-    new_event = events.objects.create(title=title,date=date,description=description,image='',user=request.user,organizer=organizer,department=department)
+    if request.method == 'POST' and request.FILES['myfile1']:
+        
+        myfile = request.FILES['myfile1']
+        print(myfile)
+        fs = FileSystemStorage()
+        name = title + "-" + date + "-" + organizer + "-" + department+"-" + myfile.name
+        filename = fs.save(name, myfile)
+        uploaded_file_url = fs.url(filename)
+        print(uploaded_file_url)
+    new_event = events.objects.create(title=title,date=date,description=description,image=name,user=request.user,organizer=organizer,department=department)
     new_event.save()
     print(title,date,description)
-    return HttpResponse('shortcuts')
+    return redirect('/events')
+
 
 def event_detail(request,event_id):
 	

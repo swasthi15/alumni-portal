@@ -11,7 +11,7 @@ def index(request):
 	print("Hitting Home Page Successfull")
 
 	#return HttpResponse("Done and dusted")
-	return render(request,'alumni_portal/templates/home.html',{'user':request.user})
+	return render(request,'alumni_portal/templates/home1.html',{'user':request.user})
 
 def signup(request):
 	print("signup")

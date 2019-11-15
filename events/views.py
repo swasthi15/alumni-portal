@@ -13,9 +13,12 @@ from django.conf import settings
 def index(request):
 	eventlist = events.objects.all()
 	print(eventlist)
-	return render(request,'events/templates/index.html',{'eventlist':eventlist})
+	return render(request,'events/templates/index1.html',{'eventlist':eventlist})
 
 def create_event(request):
+    return render(request,'events/templates/create_event.html')
+
+def create_event_submit(request):
     title = request.POST.get('title')
     date = request.POST.get('date')
     description = request.POST.get('description')
@@ -33,6 +36,8 @@ def create_event(request):
     new_event = events.objects.create(title=title,date=date,description=description,image=name,user=request.user,organizer=organizer,department=department)
     new_event.save()
     print(title,date,description)
+
+    eventlist = events.objects.all()
     return redirect('/events')
 
 

@@ -15,7 +15,7 @@ def index(request):
 
 def signup(request):
 	print("signup")
-	return render(request,'alumni_portal/templates/signup.html')
+	return render(request,'alumni_portal/templates/signup1.html')
 
 def signup_submit(request):
 	

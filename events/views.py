@@ -47,3 +47,7 @@ def event_detail(request,event_id):
 	event_obj = events.objects.get(id=event_id)
 	print(event_obj.description)
 	return render(request,'events/templates/eventdetail.html',{'event_obj':event_obj})
+
+def alumnilist(request):
+    usertype = User.objects.filter(is_staff=0)
+    print(usertype)

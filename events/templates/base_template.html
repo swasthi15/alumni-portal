@@ -41,12 +41,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#about">About1</a>
           </li>
+
+          {% if user.is_authenticated %}
+
+          <li class="nav-item" >
+            <a class="nav-link js-scroll-trigger" href="#">Hello {{user.username}}</a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/events/create_event">Create Event</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
+          </li>
+
+           {% endif %}
           
           
         </ul>

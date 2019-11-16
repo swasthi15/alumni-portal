@@ -13,10 +13,10 @@ from django.conf import settings
 def index(request):
 	eventlist = events.objects.all()
 	print(eventlist)
-	return render(request,'events/templates/index1.html',{'eventlist':eventlist})
+	return render(request,'events/templates/eventlist.html',{'eventlist':eventlist})
 
 def create_event(request):
-    return render(request,'events/templates/create_event.html')
+    return render(request,'events/templates/create_event.html',{'user':request.user})
 
 def create_event_submit(request):
     title = request.POST.get('title')

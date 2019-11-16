@@ -32,9 +32,10 @@ def signup_submit(request):
     user.save()
 
     return redirect('/login')
+
 	
 def login(request):
-	print("Hitting Home Page Successfull")
+	print(request.user)
 
 	#return HttpResponse("Done and dusted")
 	return render(request,'alumni_portal/templates/login.html')
@@ -44,11 +45,17 @@ def logging_in(request):
     password = request.POST['password']
     user = authenticate(request, username=username, password=password)
     print(user)
+    print("login")
     if user is not None:
         auth.login(request,user)
         print("Successfull")
-        return redirect('/events')
+        print(username)
+        return redirect('/')
         # Redirect to a success page.
         ...
     else:
         return redirect('/')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')

@@ -13,10 +13,10 @@ from django.conf import settings
 def index(request):
 	eventlist = events.objects.all()
 	print(eventlist)
-	return render(request,'events/templates/eventlist.html',{'eventlist':eventlist})
+	return render(request,'eventlist.html',{'eventlist':eventlist})
 
 def create_event(request):
-    return render(request,'events/templates/create_event.html',{'user':request.user})
+    return render(request,'create_event.html',{'user':request.user})
 
 def create_event_submit(request):
     title = request.POST.get('title')
@@ -46,7 +46,7 @@ def event_detail(request,event_id):
 	print(event_id)
 	event_obj = events.objects.get(id=event_id)
 	print(event_obj.description)
-	return render(request,'events/templates/eventdetail.html',{'event_obj':event_obj})
+	return render(request,'eventdetail.html',{'event_obj':event_obj})
 
 def alumnilist(request):
     usertype = User.objects.filter(is_staff=0)

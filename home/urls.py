@@ -15,17 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from . import views
 from events import urls as events_urls
 from chat import urls as chat_urls
-from home import urls as home_urls
+
 from django.conf.urls.static import  static
 from django.conf import settings
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-
-    path('', include(home_urls)),
-    
+    path('', views.index),
+    path('chat/', include(chat_urls)),
+    path('signup/',views.signup),
+    path('signup_submit/',views.signup_submit),
+    path('login/',views.login),
+    path('logging_in/',views.logging_in),
+    path('logout/',views.logout),
+    path('events/',include(events_urls))
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

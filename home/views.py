@@ -11,11 +11,11 @@ def index(request):
 	print("Hitting Home Page Successfull")
 
 	#return HttpResponse("Done and dusted")
-	return render(request,'alumni_portal/templates/home1.html',{'user':request.user})
+	return render(request,'home1.html',{'user':request.user})
 
 def signup(request):
 	print("signup")
-	return render(request,'alumni_portal/templates/signup1.html')
+	return render(request,'signup1.html')
 
 def signup_submit(request):
 	
@@ -38,7 +38,7 @@ def login(request):
 	print(request.user)
 
 	#return HttpResponse("Done and dusted")
-	return render(request,'alumni_portal/templates/login.html')
+	return render(request,'login.html')
 
 def logging_in(request):
     username = request.POST['username']

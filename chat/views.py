@@ -3,7 +3,7 @@ from django.utils.safestring import mark_safe
 import json
 
 def index(request):
-    return render(request, 'index1.html', {})
+    return render(request, 'index2.html', {})
 
 def room(request, room_name):
     return render(request, 'room.html', {

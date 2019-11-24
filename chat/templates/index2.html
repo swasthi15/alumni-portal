@@ -1,9 +1,9 @@
 {%extends "base_template1.html" %}
-{% block title %}<title>Sign up</title>{% endblock %}
+{% block title %}<title>Chat Room</title>{% endblock %}
 {% load static %}
 {% block content %}
 <head>
-	<title>Login V16</title>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -32,52 +32,47 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('{%static "login/images/bg-01.jpg" %}');">
+		<div class="container-login100" style="background-image: url('{% static "login/images/bg-01.jpg" %}');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
-					Sign Up
+					Chat room
 				</span>
-				<form class="login100-form validate-form p-b-33 p-t-5" method= "post" action="/signup_submit/">
+				<form class="login100-form validate-form p-b-33 p-t-5" >
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="User name">
+					<div class="wrap-input100 validate-input" data-validate = "Enter room name">
+						<input class="input100" id="room-name-input" type="text" placeholder="Code">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter email">
-						<input class="input100" type="email" name="email" placeholder="email">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter phone">
-						<input class="input100" type="text" name="number" placeholder="Phone number">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Enter Usertype">
-						<input class="input100" type="text" name="type" placeholder="Alumni/Student">
-						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
-					</div>
-
-
 					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn">
-							Sign up
-						</button>
+						<input class="login100-form-btn" id="room-name-submit" type="button" value="Enter"/>
+							
+						
 					</div>
 
 				</form>
 			</div>
 		</div>
 	</div>
+
+
+
+	
+
+    
+
+
+
+
+
+
+
+
 	
 
 	<div id="dropDownSelect1"></div>
+
+
 	
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -95,6 +90,22 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+
+
+	<script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+
 
 </body>
 {% endblock %}

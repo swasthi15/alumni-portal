@@ -30,6 +30,7 @@ urlpatterns = [
     path('signup_submit/',views.signup_submit),
     path('login/',views.login),
     path('logging_in/',views.logging_in),
+    path('about/',views.about),
     path('logout/',views.logout),
     path('events/',include(events_urls))
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -13,6 +13,9 @@ def index(request):
 	#return HttpResponse("Done and dusted")
 	return render(request,'home1.html',{'user':request.user})
 
+def about(request):
+    return render(request,'about.html')
+
 def signup(request):
 	print("signup")
 	return render(request,'signup1.html')

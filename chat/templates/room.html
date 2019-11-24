@@ -2,13 +2,37 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Chat Room</title>
+    <style>
+        body{
+            background-color: grey;
+            text-decoration-style: 
+            margin-top:500px;
+            margin-right: 250px;
+            margin-left: 250px;
+            text-align: center;
+            text-decoration-color: white;
+            
+
+        }
+        p{
+            color:black;
+            font-size: 40px;
+            font-family: "Monospace"; 
+        }
+
+
+    </style>
+
     <meta charset="utf-8"/>
     <title>Chat Room</title>
 </head>
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
-    <input id="chat-message-input" type="text" size="100"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
+    <center>
+        <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
+        <input id="chat-message-input" type="text" size="100"/><br/>
+        <input id="chat-message-submit" type="button" value="Send"/>
+    <center>
 </body>
 <script>
     var roomName = {{ room_name_json }};
@@ -23,9 +47,9 @@
 
     chatSocket.onmessage = function(e) {
         console.log(uname,typeof(uname));
-        var data = JSON.parse(e.data);
+        var data = JSON.parse(e.data);    
         var message = data['message'];
-        document.querySelector('#chat-log').value += (message +'\n');
+        document.querySelector('#chat-log').value += (message +'\n'); 
     };
 
     chatSocket.onclose = function(e) {
@@ -50,4 +74,3 @@
         messageInputDom.value = '';
     };
 </script>
-</html>

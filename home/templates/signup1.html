@@ -75,7 +75,7 @@
 
 
 					<div class="container-login100-form-btn m-t-32">
-						<button  id="myBtn" class="login100-form-btn">
+						<button id="myBtn" disabled="true" class="login100-form-btn">
 							Sign up
 						</button>
 					</div>
@@ -123,12 +123,10 @@ myInput.onblur = function() {
 
 function disableBtn() {
     document.getElementById("myBtn").disabled = true;
-    console.log('able');
 }
 
 function enableBtn() {
     document.getElementById("myBtn").disabled = false;
-    console.log('enable');
 }
 // When the user starts to type something inside the password field
 myInput.onkeyup = function() {
@@ -142,17 +140,17 @@ myInput.onkeyup = function() {
     letter.classList.add("invalid");
 }
 
-var count = 0;
+var flag=1;
   // Validate capital letters
   var upperCaseLetters = /[A-Z]/g;
   if(myInput.value.match(upperCaseLetters)) {
     capital.classList.remove("invalid");
     capital.classList.add("valid");
-    count = count + 1;
+   
   } else {
     capital.classList.remove("valid");
     capital.classList.add("invalid");
-    count = count - 1;
+    flag=0;
   }
 
   // Validate numbers
@@ -160,25 +158,27 @@ var count = 0;
   if(myInput.value.match(numbers)) {
     number.classList.remove("invalid");
     number.classList.add("valid");
-    count = count + 1;
+    
   } else {
     number.classList.remove("valid");
     number.classList.add("invalid");
-    count = count - 1;
+   
+    flag=0;
   }
 
   // Validate length
   if(myInput.value.length >= 8) {
     length.classList.remove("invalid");
     length.classList.add("valid");
-    count = count + 1;
+   
   } else {
     length.classList.remove("valid");
     length.classList.add("invalid");
-    count = count - 1;
+ 
+    flag=0
   }
 
-  if (count < 4){
+  if (flag== 0){
   	disableBtn();
   }else{
   	enableBtn();

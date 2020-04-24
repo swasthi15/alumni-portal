@@ -2,7 +2,7 @@
 pipeline {
     agent none
    stages {     
-    stage('Maven Install') {
+    stage('Running docker image') {
       agent {         
        docker {          
          image 'swasthishekhar/project:tagname'         

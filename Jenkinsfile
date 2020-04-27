@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "swasthishekhar/project"
     registryCredential = 'dockerhub'
-    customimage = "${registry}" + '/' + 'alumni' + "$BUILD_NUMBER"
+    customimage = "${registry}" + ':' + "$BUILD_NUMBER"
   }
   agent any
   stages {
@@ -17,7 +17,7 @@ pipeline {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
-            docker.image(customimage).push('latest')
+            docker.image(customimage).push("$BUILD_NUMBER")
         }
     }
 }

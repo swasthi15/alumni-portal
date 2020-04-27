@@ -16,7 +16,7 @@ pipeline {
       steps{
          script {
             docker.withRegistry('https://179383330071.dkr.ecr.us-east-2.amazonaws.com', 'ecr:us-east-2:ecr-credentials') {
-    		docker.image('alumni-portal').push('latest')
+    		docker.image('179383330071.dkr.ecr.us-east-2.amazonaws.com/alumni-portal1').push('latest')
         }
     }
 }

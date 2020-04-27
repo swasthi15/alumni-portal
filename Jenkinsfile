@@ -2,7 +2,7 @@ pipeline {
   environment {
     registry = "swasthishekhar/project"
     registryCredential = 'dockerhub'
-    customimage = registry + '/' + 'alumni' + "$BUILD_NUMBER"
+    customimage = "registry" + '/' + 'alumni' + "$BUILD_NUMBER"
   }
   agent any
   stages {

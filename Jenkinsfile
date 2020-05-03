@@ -22,5 +22,14 @@ pipeline {
     }
 }
 }
+    stage('Pulling image') {
+      steps{
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            sh 'docker pull swasthishekhar/project:22' 
+        }
+    }
+}
+}
 }
 }
